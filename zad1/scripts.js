@@ -27,6 +27,7 @@ function Car(json) {
 function ListOfCars() {
     var car = [];
     var self = this;
+    
     self.addCar = function(json) {
         car.push(new Car(json));
     }
