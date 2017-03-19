@@ -50,12 +50,8 @@ class ListOfCars {
 }
 
 function init() {
-    var listOfCars = new ListOfCars();
-    for(var i = 0; i < data.length; i++) {
-        listOfCars.addCar(data[i]);
-    }
-
-    var context = document.getElementById('table');
-    console.log(listOfCars.toTable())
+    const listOfCars = new ListOfCars();
+    data.forEach(item => listOfCars.addCar(item))
+    const context = document.getElementById('table');
     context.innerHTML = listOfCars.toTable();
 }
