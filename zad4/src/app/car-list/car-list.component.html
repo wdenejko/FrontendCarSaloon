@@ -1,0 +1,4 @@
+<p>
+  car-list works!
+</p>
+<app-car-item *ngFor="let data of cars" [shortInfo]="data.shortInfo" [details]="data.details" (clickEmmiter)="userClicked($event)"></app-car-item>
