@@ -1,0 +1,30 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/x.x.x/ng2-bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+
+<ul class="list-group">
+    <li class="list-group-item" (click)="showDescription = !showDescription;" class="listPointer"><strong>{{shortInfo}}</strong></li>
+    <ul class="list-group" *ngIf="showDescription">
+        <li class="list-group-item" (click)="showForm = !showForm;" class="listPointer" [hidden]="showForm">{{details}}</li>
+        <div *ngIf="showForm">
+            <form [formGroup]="myForm" (ngSubmit)="mySubmit(myForm.value)">
+                <table cellspacing="0">
+                    <tr>
+                        <td>
+                            <md-input-container>
+                                <textarea mdInput [formControl]="myForm.controls['details']" value="{{details}}" cols="60" rows="5"></textarea>      
+                            </md-input-container>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button md-raised-button color="primary" type="button" (click)="showForm = !showForm; mySubmit(myForm.value)" [disabled]="myForm.controls['details'].pristine">Save</button>
+                            <button md-button color="warn" type="button" (click)="removeItem()">Remove</button>
+                            <button md-button color="primary" type="button" (click)="showForm = !showForm">Cancel</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </ul>
+</ul>
