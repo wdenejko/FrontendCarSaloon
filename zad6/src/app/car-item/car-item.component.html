@@ -16,9 +16,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <button md-raised-button color="primary" type="button" (click)="showForm = !showForm; mySubmit(myForm.value)" [disabled]="myForm.controls['details'].pristine">Save</button>
-                            <button md-button color="warn" type="button" (click)="removeItem()">Remove</button>
-                            <button md-button color="primary" type="button" (click)="showForm = !showForm">Cancel</button>
+                            <button type="button" (click)="showForm = !showForm; mySubmit(myForm.value)" [disabled]="myForm.controls['details'].pristine">Save</button>
+                            <button type="button" (click)="removeItem()">Remove</button>
+                            <button type="button" (click)="showForm = !showForm">Cancel</button>
                         </td>
                     </tr>
                 </table>

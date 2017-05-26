@@ -1,0 +1,18 @@
+<form [formGroup]="myForm" (ngSubmit)="mySubmit(myForm.value)">
+  <input type="text" [formControl]="shortInfo">
+  <div *ngIf="shortInfo.hasError('required')">Short info required</div>
+  <br>
+  <input type="text" [formControl]="details">
+  <div *ngIf="details.hasError('required')">Details required</div>
+  <br>
+
+  <button type="submit">OK</button>
+</form>
+
+<br>
+
+<app-car-item *ngFor="let data of cars" [shortInfo]="data.shortInfo" [details]="data.details" (clickEmmiter)="userClicked($event)"></app-car-item>
+
+<br>
+
+<input type="search" [formControl]="searchField">
