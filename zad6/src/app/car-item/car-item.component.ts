@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl, Validators, FormControl } from '@angular/forms';
+import { CarSaloonService } from '../common.service';
 
 @Component({
   selector: 'app-car-item',
@@ -9,9 +10,9 @@ import { FormGroup, FormBuilder, AbstractControl, Validators, FormControl } from
 export class CarItemComponent implements OnInit {
 
   @Input()
-  shortInfo: string;
+  shortInfo: AbstractControl;
   @Input()
-  details: string;
+  details: AbstractControl;
   @Input()
   myForm: FormGroup;
 
@@ -19,7 +20,7 @@ export class CarItemComponent implements OnInit {
   @Output()
   clickEmmiter: EventEmitter<string> = new EventEmitter();
 
-  constructor(fb: FormBuilder) { 
+  constructor(fb: FormBuilder, private carSaloonService: CarSaloonService) { 
     this.myForm = fb.group(
       {
         'shortInfo': ['', Validators.required],
@@ -37,17 +38,15 @@ export class CarItemComponent implements OnInit {
 
   removeItem() {
     console.log(`${this.shortInfo} removed`);
-    this.clickEmmiter.emit(this.shortInfo);
+    this.carSaloonService.removeCar(this.shortInfo);
   }
 
   userClicked() {
     console.log(`User: ${this.details} selected`);
-    this.clickEmmiter.emit(this.details);
   }
 
   userSelected() {
     console.log(`User: ${this.shortInfo} selected`);
-    this.clickEmmiter.emit(this.shortInfo);
   }
 
 }

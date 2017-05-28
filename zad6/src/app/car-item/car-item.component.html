@@ -16,7 +16,7 @@
                     <tr>
                         <td>
                             <button type="button" class="btn btn-success" (click)="showForm = !showForm; mySubmit(myForm.value)" [disabled]="myForm.controls['details'].pristine">Save</button>
-                            <button type="button" class="btn btn-danger" (click)="removeItem()">Remove</button>
+                            <button type="button" class="btn btn-danger" (click)="removeItem(myForm.controls['shortInfo'])">Remove</button>
                             <button type="button" class="btn" (click)="showForm = !showForm">Cancel</button>
                         </td>
                     </tr>
