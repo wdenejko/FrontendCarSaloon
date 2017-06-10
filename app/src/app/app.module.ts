@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Pipe, PipeTransform } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { CarListComponent } from './car-list/car-list.component';
@@ -33,7 +34,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)    
   ],
-  providers: [CarSaloonService],
+  providers: [CarSaloonService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

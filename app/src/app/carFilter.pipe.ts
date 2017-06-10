@@ -6,8 +6,14 @@ import { FormGroup, FormBuilder, AbstractControl, Validators, FormControl } from
 }) 
 
 export class CarFilterPipe implements PipeTransform {
-    transform(value: any, args: string[]): any {
-       let filter = args[0]; 
-       return filter ? value.filter(car=> car.shortInfo.indexOf(filter) != -1) : value; 
-    } 
+    transform(valueArray: any, term: any) {
+        if (term) {
+        let filterKeys = Object.keys(valueArray[0]);
+        return valueArray.filter((item: any) =>
+        filterKeys.reduce((memo, keyName) =>
+        memo && item[keyName].toLowerCase().indexOf(term.toLowerCase()) > -1, true));
+        } else {
+            return valueArray;
+        }
+    }
 }

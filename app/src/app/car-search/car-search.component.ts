@@ -32,5 +32,4 @@ export class CarSearchComponent implements OnInit {
   ngOnInit() {
     this.cars = this.carSaloonService.getCars();
   }
-
 }

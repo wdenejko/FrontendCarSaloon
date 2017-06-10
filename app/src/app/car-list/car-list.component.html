@@ -5,12 +5,14 @@
   <div class="col-5">
     <input class="form-control form-control-danger" id="inputHorizontalDnger" type="text" [formControl]="shortInfo">
     <div class="text-muted" *ngIf="shortInfo.hasError('required')">Short info required</div>
+    <div class = "alert alert-danger" *ngIf="shortInfo.hasError('minlength')">Short info too short</div>
   </div>
   <br>
 <label for="example-text-input" class="col-1 col-form-label">Details</label>
   <div class="col-5">
     <input class="form-control form-control-danger" id="inputHorizontalDnger" type="text" [formControl]="details">
-    <div  class="text-muted" *ngIf="details.hasError('required')">Details required</div>
+    <div class="text-muted" *ngIf="details.hasError('required')">Details required</div>
+    <div class = "alert alert-danger" *ngIf="details.hasError('minlength')">Details too short</div>
   </div>
   <br>
    <button type="submit" class="btn btn-primary">Submit</button>

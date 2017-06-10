@@ -8,7 +8,6 @@ import { CarSaloonService } from '../common.service';
   styleUrls: ['./car-list.component.css']
 })
 export class CarListComponent implements OnInit {
-
   cars: Array<any>;
   myForm: FormGroup;
   shortInfo: AbstractControl;
@@ -17,8 +16,8 @@ export class CarListComponent implements OnInit {
   constructor(fb: FormBuilder, private carSaloonService: CarSaloonService) {
     this.myForm = fb.group(
       {
-        'shortInfo': ['', Validators.required],
-        'details': ['', Validators.compose([Validators.required])]
+        'shortInfo': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+        'details': ['', Validators.compose([Validators.required, Validators.minLength(2)])]
       }
     );
 
@@ -29,7 +28,9 @@ export class CarListComponent implements OnInit {
 
   mySubmit(value: any) {
     console.log(value);
-    this.carSaloonService.addCar(value);
+    if (value.shortInfo.length != 0 && value.shortInfo.length != 0) {
+      this.carSaloonService.addCar(value);
+    }
   }
 
   userClicked(modelName: string) {
