@@ -1,0 +1,17 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/x.x.x/ng2-bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<h3 style="width: 400px; margin-left: 50px; margin-top: 50px;">Search a Car</h3>
+
+<div style="width: 400px; margin-left: 50px; margin-top: 50px;" class="row"> 
+    <div class="col-md-3">Filter by:</div> 
+    <div class="col-md-3"><input type="text" #listFilter (keyup)="0" /></div> 
+</div>
+<table style="width: 800px; margin-left: 50px; margin-top: 50px;" class="table"> 
+    <tbody> 
+        <tr *ngFor="let data of cars | carFilter:listFilter.value" > 
+             <td>{{ data.shortInfo}}</td> 
+             <td>{{ data.details }}</td> 
+        </tr> 
+    </tbody> 
+</table>
