@@ -25,6 +25,7 @@ export class CarSearchComponent implements OnInit {
       }
     );
 
+    this.cars = this.carSaloonService.getCars();
     this.shortInfo = this.myForm.controls['shortInfo'];
     this.details = this.myForm.controls['details'];
    }
